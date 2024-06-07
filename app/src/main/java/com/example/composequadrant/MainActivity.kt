@@ -1,9 +1,4 @@
 package com.example.composequadrant
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,21 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-
-
-        }
-    }
-}
-
 @Composable
 fun CompasbleQuadrant() {
-    Column(modifier = Modifier.fillMaxWidth()) {
-
+    Column(Modifier.fillMaxWidth()) {
         Row(modifier = Modifier.weight(1f)) {
             InfoCard(
                 color = Color(0xFFEADDFF),
@@ -50,7 +33,6 @@ fun CompasbleQuadrant() {
                 description = stringResource(R.string.second_description),
                 modifier = Modifier.weight(1f)
             )
-
         }
         Row(modifier = Modifier.weight(1f)) {
             InfoCard(
@@ -65,16 +47,16 @@ fun CompasbleQuadrant() {
                 description = stringResource(R.string.fourth_description),
                 modifier = Modifier.weight(1f)
             )
-
-
         }
     }
-
 }
 
 @Composable
 fun InfoCard(
-    title: String, description: String, color: Color, modifier: Modifier = Modifier
+    title: String,
+    description: String,
+    color: Color,
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -84,25 +66,33 @@ fun InfoCard(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = title,
-            modifier = modifier.padding(bottom = 16.dp),
+            modifier = Modifier.padding(bottom = 16.dp),
             fontWeight = FontWeight.Bold
         )
-        Text(text = description, textAlign = TextAlign.Justify)
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
     }
-
 }
-
 @Preview(showBackground = true)
 @Composable
 fun QuadrantPreview() {
     CompasbleQuadrant()
-
-
-
+}
+/**
+class MainActivity : ComponentActivity() {
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+enableEdgeToEdge()
+setContent {
 
 
 }
+}
+}
+ */
+
 
